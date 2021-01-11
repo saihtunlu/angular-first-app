@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-12">
+    <mat-progress-bar
+      *ngIf="isInitializing || isLoading"
+      mode="indeterminate"
+    ></mat-progress-bar>
+    <div id="videoBox" class="flex-center">
+      <video height="300px" width="700px" id="video" muted autoplay></video>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">Cancel</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="row router_view pt-3">
+  <div class="col-12 flex-x-between">
+    <h3 class="primary">Attendance List</h3>
+    <div class="flex-align-center">
+      <mat-form-field [formGroup]="formData" color="accent" appearance="fill">
+        <mat-label>Date</mat-label>
+        <input matInput formControlName="date" [matDatepicker]="date" />
+        <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+        <mat-datepicker #date color="primary"></mat-datepicker>
+      </mat-form-field>
+      <button mat-button (click)="addAttendance()">Add Attendance</button>
+    </div>
+  </div>
+  <div class="col-10 mx-auto">
+    <div class="row">
+      <div
+        class="mb-3 col-3"
+        *ngFor="let attendance of attendances; let i = index"
+        [attr.data-index]="i"
+      >
+        <div class="box m-3 flex-column flex-center py-4 w-100">
+          <img
+            [src]="'http://localhost:8000' + attendance.staff.image"
+            alt=""
+            class="avatar"
+          />
+          <p>{{ i + attendance.staff.name }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

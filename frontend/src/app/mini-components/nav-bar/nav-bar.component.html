@@ -1,0 +1,15 @@
+<div class="col-12 flex-x-between">
+  <div class="left-nav">
+    <h3 class="primary">AI-Testing</h3>
+  </div>
+  <div class="right-nav">
+    <button [routerLink]="['/']" class="mr-3" mat-button>Attendant</button>
+    <button [routerLink]="['/staff']" class="mr-3" mat-button>Staff</button>
+    <button mat-button [matMenuTriggerFor]="main_menu">
+      {{ auth.first_name + " " + auth.last_name }}
+    </button>
+    <mat-menu #main_menu="matMenu">
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+  </div>
+</div>

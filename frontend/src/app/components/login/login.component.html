@@ -1,0 +1,70 @@
+<div class="row auth-page">
+  <div class="col-12">
+    <div class="h-100 flex-center">
+      <div class="box dialog-box p-0 row overflow-hidden">
+        <mat-progress-bar
+          *ngIf="isLoading_"
+          mode="indeterminate"
+        ></mat-progress-bar>
+        <div *ngIf="!isLoading_" class="col-12" style="height: 4px"></div>
+        <div class="col-6 flex-center">
+          <div class="flex-center w-100">
+            <img src="assets/images/welcome.svg" alt="" style="width: 75%" />
+          </div>
+        </div>
+        <div class="col-6 right-box py-5 px-4">
+          <h2 class="mt-0">Welcome to AI-Testing</h2>
+          <form
+            [formGroup]="formData"
+            class="flex-column flex-center"
+            (ngSubmit)="onSubmit()"
+          >
+            <!-- Email -->
+            <mat-form-field class="mb-2 w-100">
+              <mat-label>Email</mat-label>
+              <input
+                type="email"
+                matInput
+                formControlName="email"
+                placeholder="Ex. mail@gmail.com"
+              />
+              <mat-error
+                *ngIf="
+                  formData.get('email')?.hasError('email') &&
+                  !formData.get('email')?.hasError('required')
+                "
+              >
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="formData.get('email')?.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Password -->
+            <mat-form-field class="mb-2 w-100">
+              <mat-label>Password</mat-label>
+              <input type="password" matInput formControlName="password" />
+              <mat-error *ngIf="formData.get('password')?.hasError('required')">
+                Password is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <button
+              mat-raised-button
+              color="primary"
+              class="w-100"
+              type="submit"
+              (click)="onSubmit()"
+            >
+              Login
+            </button>
+          </form>
+          <div class="flex-x-between mt-base">
+            <a [routerLink]="['/register']">Create new account</a>
+            <a href="#">Forgot password?</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

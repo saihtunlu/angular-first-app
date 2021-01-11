@@ -1,0 +1,107 @@
+<div class="row auth-page">
+  <div class="col-12">
+    <div class="h-100 flex-center">
+      <div class="box dialog-box p-0 row overflow-hidden">
+        <mat-progress-bar
+          *ngIf="isLoading_"
+          mode="indeterminate"
+        ></mat-progress-bar>
+        <div *ngIf="!isLoading_" class="col-12" style="height: 4px"></div>
+        <div class="col-6 flex-center">
+          <div class="flex-center w-100">
+            <img src="assets/images/register.svg" alt="" style="width: 75%" />
+          </div>
+        </div>
+        <div class="col-6 right-box py-5 px-4">
+          <h2 class="mt-0">Welcome to AI-Testing</h2>
+          <form
+            [formGroup]="formData"
+            class="flex-column flex-center"
+            (ngSubmit)="onSubmit()"
+          >
+            <!--first name -->
+            <mat-form-field class="mb-2 w-100">
+              <mat-label>First name</mat-label>
+              <input type="text" matInput formControlName="first_name" />
+              <mat-error
+                *ngIf="formData.get('first_name')?.hasError('required')"
+              >
+                First name is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+
+            <!--last name -->
+            <mat-form-field class="mb-2 w-100">
+              <mat-label>Last name</mat-label>
+              <input type="text" matInput formControlName="last_name" />
+              <mat-error
+                *ngIf="formData.get('last_name')?.hasError('required')"
+              >
+                Last name is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Email -->
+            <mat-form-field class="mb-2 w-100">
+              <mat-label>Email</mat-label>
+              <input
+                type="email"
+                matInput
+                formControlName="email"
+                placeholder="Ex. mail@gmail.com"
+              />
+              <mat-error
+                *ngIf="
+                  formData.get('email')?.hasError('email') &&
+                  !formData.get('email')?.hasError('required')
+                "
+              >
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="formData.get('email')?.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Password -->
+            <mat-form-field class="mb-2 w-100">
+              <mat-label>Password</mat-label>
+              <input type="password" matInput formControlName="password" />
+              <mat-error *ngIf="formData.get('password')?.hasError('required')">
+                Password is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Password Confirm -->
+            <mat-form-field class="mb-2 w-100">
+              <mat-label>Password Confirm</mat-label>
+              <input
+                type="password"
+                matInput
+                formControlName="password_confirm"
+              />
+              <mat-error
+                *ngIf="formData.get('password_confirm')?.hasError('required')"
+              >
+                Password confirmation is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+
+            <button
+              mat-raised-button
+              color="primary"
+              class="w-100"
+              type="submit"
+              (click)="onSubmit()"
+            >
+              Register
+            </button>
+          </form>
+          <div class="flex-center mt-base">
+            <a [routerLink]="['/login']">Already has account?</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

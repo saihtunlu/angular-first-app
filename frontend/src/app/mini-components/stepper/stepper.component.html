@@ -1,0 +1,25 @@
+<div class="stepper flex-between-center">
+  <button
+    mat-mini-fab
+    color="accent"
+    (click)="increment()"
+    aria-label="Example icon button with a plus one icon"
+  >
+    <mat-icon>plus</mat-icon>
+  </button>
+  <input
+    type="number"
+    (keyup)="ChangeValue($event)"
+    name="number"
+    [ngModel]="value"
+    id=""
+  />
+  <button
+    mat-mini-fab
+    color="accent"
+    (click)="decrement()"
+    aria-label="Example icon button with a plus one icon"
+  >
+    <mat-icon>minus</mat-icon>
+  </button>
+</div>
